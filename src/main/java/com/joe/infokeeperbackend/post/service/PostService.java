@@ -12,4 +12,5 @@ public interface PostService {
 	public List<Post> fetchPostsById();
 
 	public void delete(long id);
+	
 }

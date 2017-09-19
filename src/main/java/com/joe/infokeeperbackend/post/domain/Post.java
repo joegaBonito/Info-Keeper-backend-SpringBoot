@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.web.multipart.MultipartFile;
+
 @Entity
 @Table(name="post")
 public class Post {
@@ -27,8 +29,11 @@ public class Post {
 	
 	@Column(name="delete_yn")
 	private char deleteYN;
+	
+	@Column(name="file_data")
+	private byte[] fileData;
 
-	public Post(long id, String source, String infoId, String infoPassword, String keyNotes,char deleteYN) {
+	public Post(long id, String source, String infoId, String infoPassword, String keyNotes,char deleteYN, byte[] fileData) {
 		super();
 		this.id = id;
 		this.source = source;
@@ -36,6 +41,7 @@ public class Post {
 		this.infoPassword = infoPassword;
 		this.keyNotes = keyNotes;
 		this.deleteYN = deleteYN;
+		this.fileData =fileData;
 	}
 
 	public Post() {
@@ -90,5 +96,13 @@ public class Post {
 
 	public void setDeleteYN(char deleteYN) {
 		this.deleteYN = deleteYN;
+	}
+
+	public byte[] getFileData() {
+		return fileData;
+	}
+
+	public void setFileData(byte[] filData) {
+		this.fileData = filData;
 	}
 }
